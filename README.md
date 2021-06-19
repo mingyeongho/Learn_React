@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Props와 State
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- props는 부모 컴포넌트가 설정하고, state는 컴포넌트 자체적으로 지난 값으로 컴포넌트 내부에서 값을 업데이트 할 수 있다.
+- 부모 컴포넌트의 state를 자식 컴포넌트의 props로 전달하고, 자식 컴포넌트에서 특정 이벤트가 발생할 때 부모 컴포넌트의 메서드를 호출하면 props도 유동적으로 사용 가능.
 
-## Available Scripts
+# ref
 
-In the project directory, you can run:
+- 특정 DOM에 작업을 수행할 때
+- ★ DOM을 꼭 직접적으로 건드려야 할 때
+- 함수형 컴포넌트에서 ref를 사용하려면 Hooks를 사용해야 한다.
 
-### `yarn start`
+# 컴포넌트 반복
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- arr.map(callback, [thisArg])
+- callback: currentValue + index + array
+- key: 컴포넌트 배열을 렌더링했을 때 어떤 원소에 변동이 있었는지 알아내려고 사용
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# ★★★★★★★★★Hooks
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- useState: 함수형 컴포넌트에서 상태관리
+- - useState는 배열을 반환 - 1. 원소의 상태 값, 2. 상태를 설정하는 함수
+- - 하나의 useState 함수는 하나의 상태 값만 관리 가능.
+- useEffect: 렌더링 직후 작업 설정(Mount, Update)
+- - 뒷정리하기: Update나 Unmount 직전에 수행
+- useReducer: useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트 해주고 싶을 때 사용
+- - 현재 상태, 업데이트를 위해 필요한 정보를 담은 액션 값을 전달받아 새로운 상태를 반환
+- - useReducer(리듀서 함수, 해당 리듀서의 기본값)
+- - state와 dispatch 함수를 반환 (state: 현재 가리키고 있는 상태, dispatch: 액션을 발생시키는 함수)
+- - 컴포넌트 업데이트 로직을 컴포넌트 바깥으로 꺼낼 수 있다.
+- useMemo: 함수형 컴포넌트 내부에서 발생하는 연산을 최적화
+- - 렌더링하는 과정에서 특정 값이 바뀌었을 때만 연산을 수행, 원하는 값이 바뀌지 않았다면 이전에 연산했던 결과를 다시 사용
+- useCallback: 주로 렌더링 성능을 최적화할 때 사용.
+- - 이벤트 핸들러 함수를 필요할 때만 생성할 수 있다.
+- - Average.js에서 함수를 만들 수가 있다. 이때 컴포넌트가 리렌더링될 때마다 이 함수들이 새로 생성된다.
+- - 첫번째 arg에 생성하고 싶은 함수, 두번째 arg에 배열(어떤 값이 바뀌었을 때 함수를 새로 생성할 지)
