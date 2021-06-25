@@ -1,12 +1,7 @@
 import "./App.css";
-import Average from "./Components/Hooks/Average";
 
 function App() {
-  return (
-    <div className="App">
-      <Average></Average>
-    </div>
-  );
+  return <div className="App">asd</div>;
 }
 
 export default App;
