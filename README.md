@@ -82,3 +82,4 @@
 - 서브라우트: 라우트 내부의 라우트
 - 리액트 라우터 부가 기능
 - - history: 라우트로 사용된 컴포넌트에 match, location과 함께 전달되는 props중 하나, 컴포넌트 내에 구현하는 메서드에서 라우터 API를 호출, ex)특정 버튼을 눌렀을 때 뒤로 가거나, 로그인 후 화면을 전환하거나, 다른 페이지로 이탈하는 것을 방지해야 할 때.
+- - withRouter: HoC(Higher-order Component), 라우트로 사용된 컴포넌트가 아니어도 match, location, history객체를 접근할 수 있게 해준다.
